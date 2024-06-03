@@ -64,17 +64,24 @@
 
         /* Sidebar Styles */
         .sidebar {
-            width: 30%;
+            width: 100%;
             padding-left: 20px;
-            border-left: 1px solid #444;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .recommended-video {
+            flex: 0 0 calc(33.33% - 20px);
+            margin-right: 20px;
             margin-bottom: 30px;
             display: block;
             text-decoration: none;
             color: inherit;
             transition: transform 0.3s ease;
+        }
+
+        .recommended-video:nth-child(3n) {
+            margin-right: 0;
         }
 
         .recommended-video:hover {
@@ -110,19 +117,38 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="recommended-videos">
-            <a href="video1.html" class="recommended-video">
-                <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Video 1">
-                <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
-                <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
-            </a>
-            <a href="video2.html" class="recommended-video">
-                <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
-                <h3 class="recommended-video-title">Recommended Video 2</h3>
-                <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
-            </a>
-            <!-- Add more recommended videos as needed -->
-        </div>
+        <a href="video1.html" class="recommended-video">
+            <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Video 1">
+            <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
+            <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
+        </a>
+        <a href="video2.html" class="recommended-video">
+            <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
+            <h3 class="recommended-video-title">Recommended Video 2</h3>
+            <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
+        </a>
+        <a href="video3.html" class="recommended-video">
+            <img src="thumbnail3.jpg" alt="Thumbnail for Recommended Video 3">
+            <h3 class="recommended-video-title">Recommended Video 3</h3>
+            <p class="recommended-video-description">Duis at urna in elit sodales imperdiet.</p>
+        </a>
+            <aside class="sidebar">
+        <a href="video1.html" class="recommended-video">
+            <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Video 1">
+            <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
+            <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
+        </a>
+        <a href="video2.html" class="recommended-video">
+            <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
+            <h3 class="recommended-video-title">Recommended Video 2</h3>
+            <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
+        </a>
+        <a href="video3.html" class="recommended-video">
+            <img src="thumbnail3.jpg" alt="Thumbnail for Recommended Video 3">
+            <h3 class="recommended-video-title">Recommended Video 3</h3>
+            <p class="recommended-video-description">Duis at urna in elit sodales imperdiet.</p>
+        </a>
+        <!-- Repeat this pattern for more videos -->
     </aside>
 
     <!-- JavaScript -->
@@ -138,3 +164,4 @@
     </script>
 </body>
 </html>
+
