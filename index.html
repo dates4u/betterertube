@@ -123,7 +123,53 @@
             color: #aaa;
         }
 
-        /* Sign-In and Login Modal Styles */
+        /* Shorts Section */
+        .shorts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .short {
+            display: flex;
+            flex-direction: column;
+            background-color: #282828;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .short-thumbnail {
+            width: 100%;
+            height: 400px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .short-thumbnail img {
+            width: 100%;
+            height: auto;
+        }
+
+        .short-info {
+            padding: 10px;
+        }
+
+        .short-title {
+            margin: 0;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .short-description {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #aaa;
+        }
+
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -203,16 +249,18 @@
                 <li>Subscriptions</li>
                 <li>Library</li>
                 <li>History</li>
+                <li>Shorts</li>
             </ul>
         </nav>
         <main class="content">
+            <!-- Video Grid Section -->
             <div class="video-grid">
                 <div class="video">
                     <div class="video-thumbnail">
                         <img src="thumbnail1.jpg" alt="Sample Video Thumbnail">
                     </div>
                     <div class="video-info">
-                        <h3 class="video-title">3AM SCARY OHIO (GONE WRONG) #cool #scary #shorts</h3>
+                        <h3 class="video-title">Sample Video</h3>
                         <p class="video-description">This is a sample video description.</p>
                     </div>
                 </div>
@@ -226,6 +274,29 @@
                     </div>
                 </div>
                 <!-- More video elements can be added here -->
+            </div>
+
+            <!-- Shorts Section -->
+            <div class="shorts-container">
+                <div class="short">
+                    <div class="short-thumbnail">
+                        <img src="short-thumbnail1.jpg" alt="Short Video Thumbnail">
+                    </div>
+                    <div class="short-info">
+                        <h3 class="short-title">Short Video 1</h3>
+                        <p class="short-description">This is a short video description.</p>
+                    </div>
+                </div>
+                <div class="short">
+                    <div class="short-thumbnail">
+                        <img src="short-thumbnail2.jpg" alt="Short Video Thumbnail">
+                    </div>
+                    <div class="short-info">
+                        <h3 class="short-title">Short Video 2</h3>
+                        <p class="short-description">This is another short video description.</p>
+                    </div>
+                </div>
+                <!-- More short video elements can be added here -->
             </div>
         </main>
     </div>
@@ -247,97 +318,4 @@
     <!-- Sign-Up Modal -->
     <div id="signUpModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="signUpClose">&times;</span>
-            <h2>Sign Up</h2>
-            <label for="username">Username</label>
-            <input type="text" id="signUpUsername" placeholder="Enter Username" required>
-            <label for="password">Password</label>
-            <input type="password" id="signUpPassword" placeholder="Enter Password" required>
-            <button id="signUpButton">Sign Up</button>
-        </div>
-    </div>
-
-    <script>
-        // User Profile handling
-        const userProfile = document.getElementById('userProfile');
-
-        function updateUserProfile() {
-            const username = localStorage.getItem('username');
-            if (username) {
-                userProfile.textContent = username;
-            }
-        }
-
-        // Sign-In Modal handling
-        const signInModal = document.getElementById('signInModal');
-        const signInClose = document.getElementById('signInClose');
-        const showSignIn = document.getElementById('userProfile');
-        const signInButton = document.getElementById('signInButton');
-
-        showSignIn.onclick = function() {
-            signInModal.style.display = "block";
-        }
-
-        signInClose.onclick = function() {
-            signInModal.style.display = "none";
-        }
-
-        signInButton.onclick = function() {
-            const username = document.getElementById('signInUsername').value;
-            const password = document.getElementById('signInPassword').value;
-            const storedUsername = localStorage.getItem('username');
-            const storedPassword = localStorage.getItem('password');
-
-            if (username === storedUsername && password === storedPassword) {
-                alert('Sign in successful');
-                userProfile.textContent = username;
-                signInModal.style.display = "none";
-            } else {
-                alert('Invalid username or password');
-            }
-        }
-
-        // Sign-Up Modal handling
-        const signUpModal = document.getElementById('signUpModal');
-        const signUpClose = document.getElementById('signUpClose');
-        const showSignUp = document.getElementById('showSignUp');
-        const signUpButton = document.getElementById('signUpButton');
-
-        showSignUp.onclick = function() {
-            signInModal.style.display = "none";
-            signUpModal.style.display = "block";
-        }
-
-        signUpClose.onclick = function() {
-            signUpModal.style.display = "none";
-        }
-
-        signUpButton.onclick = function() {
-            const username = document.getElementById('signUpUsername').value;
-            const password = document.getElementById('signUpPassword').value;
-
-            if (username && password) {
-                localStorage.setItem('username', username);
-                localStorage.setItem('password', password);
-                alert('Sign up successful');
-                signUpModal.style.display = "none";
-            } else {
-                alert('Please enter a username and password');
-            }
-        }
-
-        // Close modals when clicking outside
-        window.onclick = function(event) {
-            if (event.target == signInModal) {
-                signInModal.style.display = "none";
-            }
-            if (event.target == signUpModal) {
-                signUpModal.style.display = "none";
-            }
-        }
-
-        // Initialize user profile
-        updateUserProfile();
-    </script>
-</body>
-</html>
+            <span class="close" id="signUpClose">&times;</
