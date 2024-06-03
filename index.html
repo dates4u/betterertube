@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BettererTube</title>
+    <title>BetterTube</title>
     <style>
         body {
             margin: 0;
@@ -122,13 +122,78 @@
             font-size: 0.9em;
             color: #aaa;
         }
+
+        /* Sign-In and Login Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #202020;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 4px;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content input[type=text], .modal-content input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            background-color: #ff0000;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .modal-content button:hover {
+            opacity: 0.8;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: red;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">BetterTube</div>
         <input type="text" class="search-bar" placeholder="Search">
-        <div class="user-profile">Best User</div>
+        <div class="user-profile" id="userProfile">Sign In</div>
     </header>
     <div class="container">
         <nav class="sidebar">
@@ -144,10 +209,10 @@
             <div class="video-grid">
                 <div class="video">
                     <div class="video-thumbnail">
-                        <img src="thumbnail1.jpg" width="700" height="500" alt="Sample Video Thumbnail">
+                        <img src="thumbnail1.jpg" alt="Sample Video Thumbnail">
                     </div>
                     <div class="video-info">
-                        <h3 class="video-title">3am scary vidoe ooo</h3>
+                        <h3 class="video-title">3AM SCARY OHIO (GONE WRONG) #cool #scary #shorts</h3>
                         <p class="video-description">This is a sample video description.</p>
                     </div>
                 </div>
@@ -160,11 +225,119 @@
                         <p class="video-description">This is another sample video description.</p>
                     </div>
                 </div>
+                <!-- More video elements can be added here -->
             </div>
         </main>
     </div>
+
+    <!-- Sign-In Modal -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="signInClose">&times;</span>
+            <h2>Sign In</h2>
+            <label for="username">Username</label>
+            <input type="text" id="signInUsername" placeholder="Enter Username" required>
+            <label for="password">Password</label>
+            <input type="password" id="signInPassword" placeholder="Enter Password" required>
+            <button id="signInButton">Sign In</button>
+            <p>Don't have an account? <span id="showSignUp">Sign Up</span></p>
+        </div>
+    </div>
+
+    <!-- Sign-Up Modal -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="signUpClose">&times;</span>
+            <h2>Sign Up</h2>
+            <label for="username">Username</label>
+            <input type="text" id="signUpUsername" placeholder="Enter Username" required>
+            <label for="password">Password</label>
+            <input type="password" id="signUpPassword" placeholder="Enter Password" required>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+    </div>
+
     <script>
-        console.log("Welcome to BettererTube!");
+        // User Profile handling
+        const userProfile = document.getElementById('userProfile');
+
+        function updateUserProfile() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                userProfile.textContent = username;
+            }
+        }
+
+        // Sign-In Modal handling
+        const signInModal = document.getElementById('signInModal');
+        const signInClose = document.getElementById('signInClose');
+        const showSignIn = document.getElementById('userProfile');
+        const signInButton = document.getElementById('signInButton');
+
+        showSignIn.onclick = function() {
+            signInModal.style.display = "block";
+        }
+
+        signInClose.onclick = function() {
+            signInModal.style.display = "none";
+        }
+
+        signInButton.onclick = function() {
+            const username = document.getElementById('signInUsername').value;
+            const password = document.getElementById('signInPassword').value;
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+
+            if (username === storedUsername && password === storedPassword) {
+                alert('Sign in successful');
+                userProfile.textContent = username;
+                signInModal.style.display = "none";
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        // Sign-Up Modal handling
+        const signUpModal = document.getElementById('signUpModal');
+        const signUpClose = document.getElementById('signUpClose');
+        const showSignUp = document.getElementById('showSignUp');
+        const signUpButton = document.getElementById('signUpButton');
+
+        showSignUp.onclick = function() {
+            signInModal.style.display = "none";
+            signUpModal.style.display = "block";
+        }
+
+        signUpClose.onclick = function() {
+            signUpModal.style.display = "none";
+        }
+
+        signUpButton.onclick = function() {
+            const username = document.getElementById('signUpUsername').value;
+            const password = document.getElementById('signUpPassword').value;
+
+            if (username && password) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert('Sign up successful');
+                signUpModal.style.display = "none";
+            } else {
+                alert('Please enter a username and password');
+            }
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target == signInModal) {
+                signInModal.style.display = "none";
+            }
+            if (event.target == signUpModal) {
+                signUpModal.style.display = "none";
+            }
+        }
+
+        // Initialize user profile
+        updateUserProfile();
     </script>
 </body>
 </html>
