@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BettererTube</title>
+    <title>BetterTube</title>
     <style>
         /* General Styles */
         body {
@@ -12,24 +12,24 @@
             background-color: #181818;
             color: #ffffff;
         }
-        
+
         /* Header Styles */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #202020;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             width: 100%;
-            transition: background-color 0.3s ease, padding 0.3s ease;
+            background-color: #202020;
+            padding: 20px 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.3s ease, background-color 0.3s ease;
             z-index: 1000;
         }
 
         header.scrolled {
-            padding: 10px;
+            padding: 10px 40px;
             background-color: rgba(32, 32, 32, 0.9);
         }
 
@@ -51,7 +51,7 @@
             color: #fff;
             font-size: 1em;
             outline: none;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .search-bar::placeholder {
@@ -60,32 +60,6 @@
 
         .search-bar:focus {
             background-color: #333;
-        }
-
-        /* Main Content Styles */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-top: 100px; /* Increased padding to prevent content from hiding under header */
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .video-container {
-            width: 65%;
-        }
-
-        .video-title {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .video-description {
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #ccc;
         }
 
         /* Sidebar Styles */
@@ -130,33 +104,26 @@
 <body>
     <!-- Header -->
     <header>
-        <h1 class="logo">BettererTube</h1>
+        <h1 class="logo">BetterTube</h1>
         <input type="text" class="search-bar" placeholder="Search">
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="video-container">
-            <h2 class="video-title">Welcome to BettererTube</h2>
-            <p class="video-description">Explore trending videos, subscribe to your favorite channels, and discover new content!</p>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="recommended-videos">
+            <a href="video1.html" class="recommended-video">
+                <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Video 1">
+                <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
+                <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
+            </a>
+            <a href="video2.html" class="recommended-video">
+                <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
+                <h3 class="recommended-video-title">Recommended Video 2</h3>
+                <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
+            </a>
+            <!-- Add more recommended videos as needed -->
         </div>
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="recommended-videos">
-                <a href="video1.html" class="recommended-video">
-                    <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Videoe">
-                    <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
-                    <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
-                </a>
-                <a href="video2.html" class="recommended-video">
-                    <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
-                    <h3 class="recommended-video-title">Recommended Video 2</h3>
-                    <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
-                </a>
-                <!-- Add more recommended videos as needed -->
-            </div>
-        </aside>
-    </div>
+    </aside>
 
     <!-- JavaScript -->
     <script>
