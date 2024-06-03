@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterTube</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #181818;
+            color: #ffffff;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #202020;
+            padding: 20px 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.3s ease, background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        header.scrolled {
+            padding: 10px 40px;
+            background-color: rgba(32, 32, 32, 0.9);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff4f4f;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin-left: 20px;
+            padding: 10px 20px;
+            background-color: #121212;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 1em;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar::placeholder {
+            color: #aaa;
+        }
+
+        .search-bar:focus {
+            background-color: #333;
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background-color: #292929;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-player {
+            width: 100%;
+            height: 500px;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 30%;
+            padding-left: 20px;
+            border-left: 1px solid #444;
+        }
+
+        .recommended-video {
+            margin-bottom: 30px;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .recommended-video:hover {
+            transform: translateY(-5px);
+        }
+
+        .recommended-video img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommended-video-title {
+            font-size: 1.3em;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .recommended-video-description {
+            font-size: 1em;
+            color: #aaa;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1 class="logo">BetterTube</h1>
+        <input type="text" class="search-bar" placeholder="Search">
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Video Player -->
+        <div class="video-player">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="recommended-videos">
+            <!-- Recommended Videos -->
+            <a href="video1.html" class="recommended-video">
+                <img src="https://dates4u.github.io/betterertube/images/images.jpg" alt="Video 1">
+                <h3 class="recommended-video-title">The Rise Of Lankybox and their sad emojis!?!?</h3>
+                <p class="recommended-video-description">By 1ntern3ts00 - Lankbox bad = true</p>
+            </a>
+            <a href="video2.html" class="recommended-video">
+                <img src="thumbnail2.jpg" alt="Thumbnail for Recommended Video 2">
+                <h3 class="recommended-video-title">Recommended Video 2</h3>
+                <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
+            </a>
+            <!-- Add more recommended videos as needed -->
+        </div>
+    </aside>
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
