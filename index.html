@@ -40,198 +40,68 @@
             color: #fff;
         }
 
-        .user-profile {
-            cursor: pointer;
-        }
-
         .container {
-            display: flex;
-        }
-
-        .sidebar {
-            width: 240px;
-            background-color: #202020;
-            padding-top: 20px;
-            position: fixed;
-            top: 60px;
-            bottom: 0;
-            overflow-y: auto;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar li {
-            padding: 15px 20px;
-            cursor: pointer;
-        }
-
-        .sidebar li:hover {
-            background-color: #383838;
-        }
-
-        .content {
-            flex: 1;
-            margin-left: 240px;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
             padding-top: 80px;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .video {
-            background-color: #282828;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 140px;
-            background-color: #333;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 4px;
+            justify-content: space-between;
         }
 
-        .video-thumbnail img {
+        .video-container {
+            width: 65%;
+        }
+
+        .video-player {
             width: 100%;
-            height: auto;
+            height: 500px;
+            background-color: #000;
         }
 
         .video-info {
-            padding: 10px 0;
+            margin-top: 20px;
+            color: #ccc;
         }
 
         .video-title {
-            margin: 0;
-            font-size: 1em;
-            color: #fff;
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
 
         .video-description {
-            margin: 5px 0 0;
-            font-size: 0.9em;
-            color: #aaa;
+            font-size: 1em;
         }
 
-        /* Shorts Section */
-        .shorts-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .sidebar {
+            width: 30%;
+            padding-left: 20px;
+            border-left: 1px solid #444;
         }
 
-        .short {
-            display: flex;
-            flex-direction: column;
-            background-color: #282828;
-            border-radius: 8px;
-            overflow: hidden;
+        .recommended-videos {
+            margin-top: 20px;
         }
 
-        .short-thumbnail {
-            width: 100%;
-            height: 400px;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        .recommended-video {
+            margin-bottom: 20px;
         }
 
-        .short-thumbnail img {
+        .recommended-video img {
             width: 100%;
             height: auto;
-        }
-
-        .short-info {
-            padding: 10px;
-        }
-
-        .short-title {
-            margin: 0;
-            font-size: 1.2em;
-            color: #fff;
-        }
-
-        .short-description {
-            margin: 5px 0 0;
-            font-size: 1em;
-            color: #aaa;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #202020;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
             border-radius: 4px;
         }
 
-        .modal-content h2 {
-            margin-top: 0;
+        .recommended-video-title {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #fff;
         }
 
-        .modal-content input[type=text], .modal-content input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .modal-content button {
-            background-color: #ff0000;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .modal-content button:hover {
-            opacity: 0.8;
-        }
-
-        .close {
-            position: absolute;
-            right: 25px;
-            top: 0;
-            color: #000;
-            font-size: 35px;
-            font-weight: bold;
-        }
-
-        .close:hover, .close:focus {
-            color: red;
-            cursor: pointer;
+        .recommended-video-description {
+            font-size: 0.9em;
+            color: #aaa;
         }
     </style>
 </head>
@@ -239,83 +109,27 @@
     <header>
         <div class="logo">BetterTube</div>
         <input type="text" class="search-bar" placeholder="Search">
-        <div class="user-profile" id="userProfile">Sign In</div>
     </header>
     <div class="container">
-        <nav class="sidebar">
-            <ul>
-                <li>Home</li>
-                <li>Trending</li>
-                <li>Subscriptions</li>
-                <li>Library</li>
-                <li>History</li>
-                <li>Shorts</li>
-            </ul>
-        </nav>
-        <main class="content">
-            <!-- Video Grid Section -->
-            <div class="video-grid">
-                <div class="video">
-                    <div class="video-thumbnail">
-                        <img src="thumbnail1.jpg" alt="Sample Video Thumbnail">
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Sample Video</h3>
-                        <p class="video-description">This is a sample video description.</p>
-                    </div>
+        <div class="video-container">
+            <h1>Welcome to BetterTube</h1>
+            <p>Explore trending videos, subscribe to your favorite channels, and discover new content!</p>
+        </div>
+        <div class="sidebar">
+            <div class="recommended-videos">
+                <div class="recommended-video">
+                    <img src="thumbnail1.jpg" alt="Recommended Video Thumbnail">
+                    <h3 class="recommended-video-title">Recommended Video 1</h3>
+                    <p class="recommended-video-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div class="video">
-                    <div class="video-thumbnail">
-                        <img src="thumbnail2.jpg" alt="Another Sample Video Thumbnail">
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Another Sample Video</h3>
-                        <p class="video-description">This is another sample video description.</p>
-                    </div>
+                <div class="recommended-video">
+                    <img src="thumbnail2.jpg" alt="Recommended Video Thumbnail">
+                    <h3 class="recommended-video-title">Recommended Video 2</h3>
+                    <p class="recommended-video-description">Sed fermentum ipsum eu quam ullamcorper vehicula.</p>
                 </div>
-                <!-- More video elements can be added here -->
+                <!-- Add more recommended videos as needed -->
             </div>
-
-            <!-- Shorts Section -->
-            <div class="shorts-container">
-                <div class="short">
-                    <div class="short-thumbnail">
-                        <img src="short-thumbnail1.jpg" alt="Short Video Thumbnail">
-                    </div>
-                    <div class="short-info">
-                        <h3 class="short-title">Short Video 1</h3>
-                        <p class="short-description">This is a short video description.</p>
-                    </div>
-                </div>
-                <div class="short">
-                    <div class="short-thumbnail">
-                        <img src="short-thumbnail2.jpg" alt="Short Video Thumbnail">
-                    </div>
-                    <div class="short-info">
-                        <h3 class="short-title">Short Video 2</h3>
-                        <p class="short-description">This is another short video description.</p>
-                    </div>
-                </div>
-                <!-- More short video elements can be added here -->
-            </div>
-        </main>
-    </div>
-
-    <!-- Sign-In Modal -->
-    <div id="signInModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="signInClose">&times;</span>
-            <h2>Sign In</h2>
-            <label for="username">Username</label>
-            <input type="text" id="signInUsername" placeholder="Enter Username" required>
-            <label for="password">Password</label>
-            <input type="password" id="signInPassword" placeholder="Enter Password" required>
-            <button id="signInButton">Sign In</button>
-            <p>Don't have an account? <span id="showSignUp">Sign Up</span></p>
         </div>
     </div>
-
-    <!-- Sign-Up Modal -->
-    <div id="signUpModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="signUpClose">&times;</
+</body>
+</html>
